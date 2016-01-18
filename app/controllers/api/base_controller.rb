@@ -12,6 +12,10 @@ module Api
       respond_with instance_variable_get(plural_resource_name)
     end
 
+    def show
+      respond_with get_resource
+    end
+
     private
 
       def get_resource
