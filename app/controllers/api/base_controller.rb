@@ -26,6 +26,14 @@ module Api
       end
     end
 
+    def update  
+      if get_resource.update(resource_params)
+        render :show
+      else
+        render json: get_resource.errors, status: :unprocessable_entity
+      end
+    end 
+
     private
 
       def get_resource
