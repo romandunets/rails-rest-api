@@ -32,7 +32,12 @@ module Api
       else
         render json: get_resource.errors, status: :unprocessable_entity
       end
-    end 
+    end
+
+    def destroy  
+      get_resource.destroy
+      head :ok
+    end
 
     private
 
