@@ -3,8 +3,8 @@ module Api
 
     private
 
-      def users_params
-        params.require(:album).permit(:email, :first_name, :second_name)
+      def user_params
+        params.permit(:email, :first_name, :second_name)
       end
 
       def query_params
