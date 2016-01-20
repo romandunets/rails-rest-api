@@ -12,6 +12,8 @@ You need to must a git client to clone the repository. You can get it from [http
 
 Also you must to have Ruby 2.2 and Rails 4.0.0+ installed.
 
+### Installation
+
 1. Clone rails-rest-api
 
     Clone the rails-rest-api repository using git:
