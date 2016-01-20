@@ -12,28 +12,29 @@ You need to must a git client to clone the repository. You can get it from [http
 
 Also you must to have Ruby 2.2 and Rails 4.0.0+ installed.
 
-### Clone rails-rest-api
+1. Clone rails-rest-api
 
-Clone the rails-rest-api repository using git:
+    Clone the rails-rest-api repository using git:
 
-```
-git clone https://github.com/romandunets/rails-rest-api.git
-```
+    ```
+    git clone https://github.com/romandunets/rails-rest-api.git
+    ```
 
-### Install gems
-```
-bundle install
-```
+1. Install gems
+    ```
+    bundle install
+    ```
 
-### Initialize database
-```
-rake db:create db:migrate db:seed
-```
+1. Initialize database
+    ```
+    rake db:create db:migrate db:seed
+    ```
 
-### Run the application in localhost
-```
-rails server
-```
+1. Run the application in localhost
+    ```
+    rails server
+    ```
+
 ## Resources
 There are one resource, **users**
 
@@ -61,4 +62,3 @@ You can create an new user making a PUT / PATCH request to ```/api/users/1.json`
 
 ### Delete user
 You can delete an existing user making a DELETE request to ```/api/users/1.json``` (replace 1 by a target user id)
-
