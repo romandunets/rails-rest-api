@@ -38,11 +38,12 @@ Also you must to have Ruby 2.2 and Rails 4.0.0+ installed.
     ```
 
 ## Resources
-There are one resource, **users**
+There are two resources, **users** and **movies**
 
-The route for it is
+The routes for them are
 
 - /api/users
+- /api/movies
 
 ### List users
 You can list all users making a GET request to ```/api/users.json```
@@ -53,7 +54,7 @@ You can get one user making a GET request to ```/api/users/1.json``` (replace 1 
 ### Create user
 You can create an new user making a POST request to ```/api/users.json``` with the following parameters
 ```
-{ "email": "johndoe@example.com", "first_name": "John", "second_name: "Doe" }
+{ "email": "johndoe@example.com", "first_name": "John", "second_name": "Doe" }
 ```
 
 ### Update user
@@ -64,3 +65,24 @@ You can create an new user making a PUT / PATCH request to ```/api/users/1.json`
 
 ### Delete user
 You can delete an existing user making a DELETE request to ```/api/users/1.json``` (replace 1 by a target user id)
+
+### List movies
+You can list all movies making a GET request to ```/api/movies.json```
+
+### Get movie
+You can get one movie making a GET request to ```/api/movies/1.json``` (replace 1 by a target movie id)
+
+### Create movie
+You can create an new movie making a POST request to ```/api/movies.json``` with the following parameters
+```
+{ "title": "Supermen", "year": "1996", "description": "Nice movie..." }
+```
+
+### Update movie
+You can create an new movie making a PUT / PATCH request to ```/api/movies/1.json``` (replace 1 by a target movie id) with the following parameters
+```
+{ "title": "Supermen", "year": "1996", "description": "Nice movie..." }
+```
+
+### Delete movie
+You can delete an existing movie making a DELETE request to ```/api/movie/1.json``` (replace 1 by a target movie id)
