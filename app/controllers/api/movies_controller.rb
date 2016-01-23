@@ -1,6 +1,12 @@
 module Api  
   class MoviesController < Api::BaseController
 
+    before_action :load_movie, only: [:users]
+
+    def users
+      render :movie_users, status: :ok
+    end
+
     private
 
       def movie_params
@@ -9,6 +15,10 @@ module Api
 
       def query_params
         params.permit(:movie_id, :title, :year, :description)
+      end
+
+      def load_movie
+        @movie = Movie.find(params[:movie_id])
       end
 
   end
