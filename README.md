@@ -66,6 +66,15 @@ You can create an new user making a PUT / PATCH request to ```/api/users/1.json`
 ### Delete user
 You can delete an existing user making a DELETE request to ```/api/users/1.json``` (replace 1 by a target user id)
 
+### List user movies
+You can list all movies for user making a GET request to ```/api/users/1/movie.json``` (replace 1 by a target user id)
+
+### Add movie for user
+You can add existing movie for user making a GET request to ```/api/users/1/add_movie.json?movie_id=2``` (replace 1 by a target user id and 2 by a target movie id)
+
+### Remove movie from user
+You can remove existing movie from user making a GET request to ```/api/users/1/remove_movie.json?movie_id=2``` (replace 1 by a target user id and 2 by a target movie id)
+
 ### List movies
 You can list all movies making a GET request to ```/api/movies.json```
 
@@ -86,3 +95,6 @@ You can create an new movie making a PUT / PATCH request to ```/api/movies/1.jso
 
 ### Delete movie
 You can delete an existing movie making a DELETE request to ```/api/movie/1.json``` (replace 1 by a target movie id)
+
+### List movie users
+You can list all users for movie making a GET request to ```/api/movies/1/users.json``` (replace 1 by a target movie id)
