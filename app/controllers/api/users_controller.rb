@@ -1,8 +1,12 @@
 module Api  
   class UsersController < Api::BaseController
 
-    before_action :load_user, only: [:add_movie, :remove_movie]
+    before_action :load_user, only: [:movies, :add_movie, :remove_movie]
     before_action :load_movie, only: [:add_movie, :remove_movie]
+
+    def movies
+      render :user_movies, status: :ok
+    end
 
     def add_movie
       if @user.movies.exclude?(@movie)
