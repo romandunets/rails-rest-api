@@ -1,15 +1,24 @@
 module Api  
   class UsersController < Api::BaseController
 
-    before_action :load_user, only: [:add_movie]
-    before_action :load_movie, only: [:add_movie]
+    before_action :load_user, only: [:add_movie, :remove_movie]
+    before_action :load_movie, only: [:add_movie, :remove_movie]
 
     def add_movie
       if @user.movies.exclude?(@movie)
         @user.movies << @movie
-        render :add_movie, status: :ok
+        render :user_movie, status: :ok
       else
         render json: ["User already has this movie"], status: :unprocessable_entity
+      end
+    end
+
+    def remove_movie
+      if @user.movies.include?(@movie)
+        @user.movies.delete(@movie)
+        render :user_movie, status: :ok
+      else
+        render json: ["User already does not has this movie"], status: :unprocessable_entity
       end
     end
 
