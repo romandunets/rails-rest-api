@@ -15,6 +15,11 @@ class User < ActiveRecord::Base
     by_matching_movies(movie_ids).group(:user_id).count
   }
 
+  def recommended_movies
+    user_ids = User.count_by_matching_movies(movie_ids).keys - [id]
+    Movie.not_in(movie_ids).for_users(user_ids).group(:movie_id).count
+  end
+
   private
 
     def downcase_email
