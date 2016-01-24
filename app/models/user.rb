@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
 
   before_save :downcase_email
 
+  scope :by_matching_movies, -> (movie_ids) {
+    joins(:movies).where('movies_users.movie_id IN (?)', movie_ids)
+  }
+
   private
 
     def downcase_email
