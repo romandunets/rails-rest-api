@@ -7,4 +7,8 @@ class Movie < ActiveRecord::Base
   scope :for_users, -> (user_ids) {
     joins(:users).where('movies_users.user_id IN (?)', user_ids)
   }
+
+  scope :not_in, -> (movie_ids) {
+    where('movies.id NOT IN (?)', movie_ids)
+  }
 end
