@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
     joins(:movies).where('movies_users.movie_id IN (?)', movie_ids)
   }
 
+  scope :count_by_matching_movies, -> (movie_ids) {
+    by_matching_movies(movie_ids).group(:user_id).count
+  }
+
   private
 
     def downcase_email
