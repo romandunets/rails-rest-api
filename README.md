@@ -75,6 +75,9 @@ You can add existing movie for user making a GET request to ```/api/users/1/add_
 ### Remove movie from user
 You can remove existing movie from user making a GET request to ```/api/users/1/remove_movie.json?movie_id=2``` (replace 1 by a target user id and 2 by a target movie id)
 
+### List recommended movies for user
+You can list recommended movie for user making a GET request to ```/api/users/1/recommended_movies.json``` (replace 1 by a target user id)
+
 ### List movies
 You can list all movies making a GET request to ```/api/movies.json```
 
