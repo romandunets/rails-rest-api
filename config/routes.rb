@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       get :movies
       get :add_movie
       get :remove_movie
+      get :recommended_movies
     end
 
     resources :movies, only: [:index, :show, :create, :update, :destroy] do

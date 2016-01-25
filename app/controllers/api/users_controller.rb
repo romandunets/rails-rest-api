@@ -1,7 +1,7 @@
 module Api  
   class UsersController < Api::BaseController
 
-    before_action :load_user, only: [:movies, :add_movie, :remove_movie]
+    before_action :load_user, only: [:movies, :add_movie, :remove_movie, :recommended_movies]
     before_action :load_movie, only: [:add_movie, :remove_movie]
 
     def movies
@@ -24,6 +24,9 @@ module Api
       else
         render json: ["User already does not has this movie"], status: :unprocessable_entity
       end
+    end
+
+    def recommended_movies
     end
 
     private
