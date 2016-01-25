@@ -5,13 +5,12 @@ module Api
     before_action :load_movie, only: [:add_movie, :remove_movie]
 
     def movies
-      render :user_movies, status: :ok
     end
 
     def add_movie
       if @user.movies.exclude?(@movie)
         @user.movies << @movie
-        render :user_movie, status: :ok
+        render "api/movies/show", status: :ok
       else
         render json: ["User already has this movie"], status: :unprocessable_entity
       end
@@ -20,7 +19,7 @@ module Api
     def remove_movie
       if @user.movies.include?(@movie)
         @user.movies.delete(@movie)
-        render :user_movie, status: :ok
+        render "api/movies/show", status: :ok
       else
         render json: ["User already does not has this movie"], status: :unprocessable_entity
       end

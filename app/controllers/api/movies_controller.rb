@@ -4,7 +4,6 @@ module Api
     before_action :load_movie, only: [:users]
 
     def users
-      render :movie_users, status: :ok
     end
 
     private
