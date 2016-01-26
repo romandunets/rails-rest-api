@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
 
   before_save :downcase_email
 
-  scope :by_matching_movies, -> (movie_ids) {
-    joins(:movies).where('movies_users.movie_id IN (?)', movie_ids)
+  scope :by_matching_movies, -> (movie_ids, user_id) {
+    joins(:movies).where('user_movies.movie_id IN (?) AND user_movies.user_id <> ?', movie_ids, user_id).group(:user_id)
   }
 
   scope :count_by_matching_movies, -> (movie_ids) {
