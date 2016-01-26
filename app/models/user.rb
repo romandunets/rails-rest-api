@@ -17,8 +17,21 @@ class User < ActiveRecord::Base
   }
 
   def recommended_movies
-    user_ids = User.count_by_matching_movies(movie_ids).keys - [id]
-    Movie.not_in(movie_ids).for_users(user_ids).group(:movie_id).count
+    ratings = {}
+
+    matching_users = User.by_matching_movies(movie_ids, id)
+    user_ratings = matching_users.count
+    user_movies = UserMovie.where('user_id IN (?) AND movie_id NOT IN (?)', matching_users.ids, movie_ids)
+
+    user_movies.each do |user_movie|
+      if ratings.has_key?(user_movie.movie_id)
+        ratings[user_movie.movie_id] += user_ratings[user_movie.user_id]
+      else
+        ratings[user_movie.movie_id] = user_ratings[user_movie.user_id]
+      end
+    end
+
+    ratings
   end
 
   private
