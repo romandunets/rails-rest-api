@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
     matching_users = User.by_matching_movies(movie_ids, id)
     user_ratings = matching_users.count
-    user_movies = UserMovie.where('user_id IN (?) AND movie_id NOT IN (?)', matching_users.ids, movie_ids)
+    user_movies = UserMovie.for_users_with_movies(matching_users.ids, movie_ids)
 
     user_movies.each do |user_movie|
       if ratings.has_key?(user_movie.movie_id)
