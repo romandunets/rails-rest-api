@@ -20,11 +20,7 @@ class User < ActiveRecord::Base
     user_movies = UserMovie.for_users_with_movies(matching_users.ids, movie_ids)
 
     user_movies.each do |user_movie|
-      if ratings.has_key?(user_movie.movie_id)
-        ratings[user_movie.movie_id] += user_ratings[user_movie.user_id]
-      else
-        ratings[user_movie.movie_id] = user_ratings[user_movie.user_id]
-      end
+      ratings[user_movie.movie_id] = ratings.has_key?(user_movie.movie_id) ? ratings[user_movie.movie_id] += user_ratings[user_movie.user_id] : user_ratings[user_movie.user_id]
     end
 
     ratings
