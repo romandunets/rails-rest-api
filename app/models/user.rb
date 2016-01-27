@@ -12,10 +12,6 @@ class User < ActiveRecord::Base
     joins(:movies).where('user_movies.movie_id IN (?) AND user_movies.user_id <> ?', movie_ids, user_id).group(:user_id)
   }
 
-  scope :count_by_matching_movies, -> (movie_ids) {
-    by_matching_movies(movie_ids).group(:user_id).count
-  }
-
   def recommended_movies
     ratings = {}
 
