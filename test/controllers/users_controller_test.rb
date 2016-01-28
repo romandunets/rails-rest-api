@@ -16,4 +16,11 @@ class UsersControllerTest < ActionController::TestCase
     get :show, id: @user, format: :json
     assert_response :success
   end
+
+  test 'should create user' do
+    assert_difference('User.count') do
+      post :create, email: 'testuser1564@mail.com', format: :json
+      assert_response :success
+    end
+  end
 end
