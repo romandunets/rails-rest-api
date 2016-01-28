@@ -28,4 +28,11 @@ class UsersControllerTest < ActionController::TestCase
     patch :update, id: @user, post: { email: 'testuser2@mail.com' }, format: :json
     assert_response :success
   end
+
+  test 'should destroy user' do
+    assert_difference('User.count', -1) do
+      delete :destroy, id: @user, format: :json
+      assert_response :success
+    end
+  end
 end
