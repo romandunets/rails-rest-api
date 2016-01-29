@@ -57,4 +57,10 @@ class UsersControllerTest < ActionController::TestCase
       assert_response :success
     end
   end
+
+  test 'should get recommended movies for user' do
+    get :recommended_movies, id: @user, format: :json
+    assert_response :success
+    assert_not_nil assigns :user
+  end
 end
