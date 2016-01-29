@@ -11,4 +11,9 @@ class MoviesControllerTest < ActionController::TestCase
     assert_response :success
     assert_not_nil assigns :movies
   end
+
+  test 'should show movie' do
+    get :show, id: @movie, format: :json
+    assert_response :success
+  end
 end
