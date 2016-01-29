@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     end
 
     resources :movies, only: [:index, :show, :create, :update, :destroy] do
-      get :users
+      member do
+        get :users
+      end
     end
   end
 
