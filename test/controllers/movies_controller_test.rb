@@ -16,4 +16,11 @@ class MoviesControllerTest < ActionController::TestCase
     get :show, id: @movie, format: :json
     assert_response :success
   end
+
+  test 'should create movie' do
+    assert_difference('Movie.count') do
+      post :create, title: 'whitescrewdriver', year: 2003, format: :json
+      assert_response :success
+    end
+  end
 end
