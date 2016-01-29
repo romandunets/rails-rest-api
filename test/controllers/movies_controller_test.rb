@@ -35,4 +35,10 @@ class MoviesControllerTest < ActionController::TestCase
       assert_response :success
     end
   end
+
+  test 'should get movie users' do
+    get :users, id: @movie, format: :json
+    assert_response :success
+    assert_not_nil assigns :movie
+  end
 end
