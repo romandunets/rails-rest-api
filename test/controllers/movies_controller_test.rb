@@ -23,4 +23,9 @@ class MoviesControllerTest < ActionController::TestCase
       assert_response :success
     end
   end
+
+  test 'should update movie' do
+    patch :update, id: @movie, post: { title: 'yellowhammer' }, format: :json
+    assert_response :success
+  end
 end
