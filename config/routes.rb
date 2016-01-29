@@ -4,9 +4,9 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :create, :update, :destroy] do
       member do
         get :movies
-        get :add_movie
-        get :remove_movie
         get :recommended_movies
+        post :add_movie
+        post :remove_movie
       end
     end
 
