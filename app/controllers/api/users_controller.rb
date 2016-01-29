@@ -1,7 +1,7 @@
 module Api  
   class UsersController < Api::BaseController
 
-    before_action :load_user, only: [:movies, :add_movie, :remove_movie, :recommended_movies]
+    before_action :set_resource, only: [:destroy, :show, :update, :users, :movies, :add_movie, :remove_movie, :recommended_movies]
     before_action :load_movie, only: [:add_movie, :remove_movie]
 
     def movies
@@ -36,10 +36,6 @@ module Api
 
       def query_params
         params.permit(:user_id, :email, :first_name, :second_name)
-      end
-
-      def load_user
-        @user = User.find(params[:user_id])
       end
 
       def load_movie
