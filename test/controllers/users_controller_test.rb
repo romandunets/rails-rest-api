@@ -3,6 +3,7 @@ require 'test_helper'
 class UsersControllerTest < ActionController::TestCase
   def setup
     @user = User.create(email: 'testuser@mail.com')
+    @movie = Movie.create(title: 'bluehammer', year: 1997)
     @controller = Api::UsersController.new
   end
 
@@ -40,5 +41,12 @@ class UsersControllerTest < ActionController::TestCase
     get :movies, id: @user, format: :json
     assert_response :success
     assert_not_nil assigns :user
+  end
+
+  test 'should add movie for user' do
+    assert_difference('@user.movies.count') do
+      post :add_movie, id: @user, movie_id: @movie.id, format: :json
+      assert_response :success
+    end
   end
 end
