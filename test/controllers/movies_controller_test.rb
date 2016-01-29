@@ -28,4 +28,11 @@ class MoviesControllerTest < ActionController::TestCase
     patch :update, id: @movie, post: { title: 'yellowhammer' }, format: :json
     assert_response :success
   end
+
+  test 'should destroy movie' do
+    assert_difference('Movie.count', -1) do
+      delete :destroy, id: @movie, format: :json
+      assert_response :success
+    end
+  end
 end
