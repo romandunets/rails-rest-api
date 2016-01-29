@@ -49,4 +49,12 @@ class UsersControllerTest < ActionController::TestCase
       assert_response :success
     end
   end
+
+  test 'should remove movie from user' do
+    @user.movies << @movie
+    assert_difference('@user.movies.count', -1) do
+      post :remove_movie, id: @user, movie_id: @movie.id, format: :json
+      assert_response :success
+    end
+  end
 end
