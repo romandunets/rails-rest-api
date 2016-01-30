@@ -101,3 +101,10 @@ You can delete an existing movie making a DELETE request to ```/api/movie/1.json
 
 ### List movie users
 You can list all users for movie making a GET request to ```/api/movies/1/users.json``` (replace 1 by a target movie id)
+
+## Running tests
+
+The application has feature tests for controllers. You can run them using rake:
+```
+rake test
+```
