@@ -18,7 +18,7 @@ class UsersControllerTest < ActionController::TestCase
     body = JSON.parse(response.body)
 
     assert_response :success
-    assert_equal @user.id, body['user']['id']
+    assert_not_nil assigns :user
   end
 
   test 'should create user' do
