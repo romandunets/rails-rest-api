@@ -15,7 +15,10 @@ class UsersControllerTest < ActionController::TestCase
 
   test 'should show user' do
     get :show, id: @user, format: :json
+    body = JSON.parse(response.body)
+
     assert_response :success
+    assert_equal @user.id, body['user']['id']
   end
 
   test 'should create user' do
