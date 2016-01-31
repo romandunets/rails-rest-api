@@ -56,4 +56,27 @@ class UserTest < ActiveSupport::TestCase
     assert_equal true, matching_users.include?(@user_1)
     assert_equal false, matching_users.include?(@user_2)
   end
+
+  test "should recommended movies for user" do
+    @movie = Movie.create(title: 'bluehammer', year: 1997)
+    @movie_1 = Movie.create(title: 'whitescrewdriver', year: 1997)
+    @movie_2 = Movie.create(title: 'greensaw', year: 2003)
+    @movie_3 = Movie.create(title: 'greyaxe', year: 2008)
+
+    @user_1 = User.create(email: 'testuser1@example.com')
+    @user_2 = User.create(email: 'testuser2@example.com')
+
+    @user.movies << @movie << @movie_1
+    @user_1.movies << @movie << @movie_1 << @movie_2
+    @user_2.movies << @movie << @movie_2 << @movie_3
+
+    @user.save
+    @user_1.save
+    @user_2.save
+
+    recommended_movies = @user.recommended_movies
+
+    assert_equal 3, recommended_movies[@movie_2.id]
+    assert_equal 1, recommended_movies[@movie_3.id]
+  end
 end

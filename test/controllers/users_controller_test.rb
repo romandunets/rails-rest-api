@@ -70,7 +70,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test 'should get recommended movies for user' do
-  	@movie_1 = Movie.create(title: 'whitescrewdriver', year: 1997)
+    @movie_1 = Movie.create(title: 'whitescrewdriver', year: 1997)
     @movie_2 = Movie.create(title: 'greensaw', year: 2003)
     @movie_3 = Movie.create(title: 'greyaxe', year: 2008)
 
