@@ -40,4 +40,20 @@ class UserTest < ActiveSupport::TestCase
     @user.save
     assert_equal email.downcase, @user.reload.email
   end
+
+  test "should select users by matching movies" do
+    @movie = Movie.create(title: 'bluehammer', year: 1997)
+    @user_1 = User.create(email: 'testuser1@example.com')
+    @user_2 = User.create(email: 'testuser2@example.com')
+    
+    @user.movies << @movie
+    @user_1.movies << @movie
+
+    @user.save
+    @user_1.save
+    matching_users = User.by_matching_movies(@user.movie_ids, @user.id)
+
+    assert_equal true, matching_users.include?(@user_1)
+    assert_equal false, matching_users.include?(@user_2)
+  end
 end
