@@ -33,4 +33,11 @@ class UserTest < ActiveSupport::TestCase
     @user.save
     assert_not second_user.valid?
   end
+
+  test "email addresses should be downcase" do
+    email = "USER@EXAMPLE.COM"
+    @user.email = email
+    @user.save
+    assert_equal email.downcase, @user.reload.email
+  end
 end
