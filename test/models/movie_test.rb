@@ -18,4 +18,11 @@ class MovieTest < ActiveSupport::TestCase
     @movie.title = "a" * 256
     assert_not @movie.valid?
   end
+
+  test "title should be unique" do
+    second_movie = @movie.dup
+    second_movie.title = @movie.title.upcase
+    @movie.save
+    assert_not second_movie.valid?
+  end
 end
