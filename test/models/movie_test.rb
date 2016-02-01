@@ -25,4 +25,9 @@ class MovieTest < ActiveSupport::TestCase
     @movie.save
     assert_not second_movie.valid?
   end
+
+  test "year should be present" do
+    @movie.year = nil
+    assert_not @movie.valid?
+  end
 end
