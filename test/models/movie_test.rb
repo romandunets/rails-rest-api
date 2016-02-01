@@ -30,4 +30,14 @@ class MovieTest < ActiveSupport::TestCase
     @movie.year = nil
     assert_not @movie.valid?
   end
+
+  test "year should be greater or equal to 1800" do
+    @movie.year = 1799
+    assert_not @movie.valid?
+  end
+
+  test "year should be less or equal to 2100" do
+    @movie.year = 2101
+    assert_not @movie.valid?
+  end
 end
