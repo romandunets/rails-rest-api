@@ -41,6 +41,11 @@ class UserTest < ActiveSupport::TestCase
     assert_equal email.downcase, @user.reload.email
   end
 
+  test "gender should be valid" do
+    @user.gender = "unvalid"
+    assert_not @user.valid?
+  end
+
   test "should select users by matching movies" do
     @movie = Movie.create(title: 'bluehammer', year: 1997)
     @user_1 = User.create(email: 'testuser1@example.com')
