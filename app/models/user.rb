@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
     ratings
   end
 
+  def rate_movie(movie, score)
+    user_movies.create(movie: movie, score: score)
+  end
+
   private
 
     def downcase_email
