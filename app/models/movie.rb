@@ -6,4 +6,5 @@ class Movie < ActiveRecord::Base
   validates :year, presence: true, inclusion: 1800..2100
   validates :duration, presence: true, inclusion: 0..21600
   validates :studio, presence: true, length: { maximum: 255 }
+  validates :description, presence: true
 end
