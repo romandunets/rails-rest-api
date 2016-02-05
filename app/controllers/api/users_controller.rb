@@ -1,27 +1,27 @@
 module Api  
   class UsersController < Api::BaseController
 
-    before_action :set_resource, only: [:destroy, :show, :update, :users, :movies, :add_movie, :remove_movie, :recommended_movies]
-    before_action :load_movie, only: [:add_movie, :remove_movie]
+    before_action :set_resource, only: [:destroy, :show, :update, :users, :movies, :rate_movie, :unrate_movie, :recommended_movies]
+    before_action :load_movie, only: [:rate_movie, :unrate_movie]
 
     def movies
     end
 
-    def add_movie
+    def rate_movie
       if @user.movies.exclude?(@movie)
-        @user.movies << @movie
+        @user.rate_movie(@movie, params[:score])
         render "api/movies/show", status: :ok
       else
-        render json: ["User already has this movie"], status: :unprocessable_entity
+        render json: ["User has already rated this movie"], status: :unprocessable_entity
       end
     end
 
-    def remove_movie
+    def unrate_movie
       if @user.movies.include?(@movie)
-        @user.movies.delete(@movie)
+        @user.unrate_movie(@movie)
         render "api/movies/show", status: :ok
       else
-        render json: ["User already does not has this movie"], status: :unprocessable_entity
+        render json: ["User has not rated this movie"], status: :unprocessable_entity
       end
     end
 
