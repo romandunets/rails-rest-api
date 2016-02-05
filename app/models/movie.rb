@@ -7,4 +7,8 @@ class Movie < ActiveRecord::Base
   validates :duration, presence: true, inclusion: 0..21600
   validates :studio, presence: true, length: { maximum: 255 }
   validates :description, presence: true
+
+  def average_score
+    user_movies.average(:score)
+  end
 end
