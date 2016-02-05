@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160204153114) do
+ActiveRecord::Schema.define(version: 20160205130629) do
 
   create_table "movies", force: :cascade do |t|
     t.string   "title"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20160204153114) do
   create_table "user_movies", id: false, force: :cascade do |t|
     t.integer "movie_id"
     t.integer "user_id"
-    t.float   "score",    default: 0.0, null: false
+    t.float   "score"
   end
 
   add_index "user_movies", ["movie_id", "user_id"], name: "index_user_movies_on_movie_id_and_user_id"
