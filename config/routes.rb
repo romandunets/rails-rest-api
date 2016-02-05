@@ -5,8 +5,8 @@ Rails.application.routes.draw do
       member do
         get :movies
         get :recommended_movies
-        post :add_movie
-        post :remove_movie
+        post :rate_movie
+        post :unrate_movie
       end
     end
 
