@@ -1,8 +1,9 @@
-json.movies @user.movies do |movie|  
-  json.id          movie.id
-  json.title       movie.title
-  json.year        movie.year
-  json.duration    movie.duration
-  json.studio      movie.studio
-  json.description movie.description
+json.movies @user.user_movies do |user_movie|
+  json.id          user_movie.movie.id
+  json.title       user_movie.movie.title
+  json.year        user_movie.movie.year
+  json.duration    user_movie.movie.duration
+  json.studio      user_movie.movie.studio
+  json.description user_movie.movie.description
+  json.score       user_movie.score
 end
