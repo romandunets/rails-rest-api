@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
     user_movies.create(movie: movie, score: score)
   end
 
+  def unrate_movie(movie)
+    movies.destroy(movie)
+  end
+
   private
 
     def downcase_email
