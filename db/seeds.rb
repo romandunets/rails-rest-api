@@ -10,6 +10,14 @@ greensaw         = Movie.create(title: 'greensaw', year: 2008, duration: 4240, s
 greyaxe          = Movie.create(title: 'greyaxe', year: 1995, duration: 9830, studio: "Axe studio", description: 'Movie about grey axe')
 pinkcrowbar      = Movie.create(title: 'pinkcrowbar', year: 2014, duration: 3990, studio: "Crowbar studio", description: 'Movie about pink crowbar')
 
-testuser1.movies << bluehammer << whitescrewdriver << greensaw
-testuser2.movies << whitescrewdriver << greensaw << greyaxe
-testuser3.movies << greensaw << greyaxe << pinkcrowbar
+testuser1.rate_movie(bluehammer, 4.5)
+testuser1.rate_movie(whitescrewdriver, 3.5)
+testuser1.rate_movie(greensaw, 3.0)
+
+testuser2.rate_movie(whitescrewdriver, 4.0)
+testuser2.rate_movie(greensaw, 4.0)
+testuser2.rate_movie(greyaxe, 2.0)
+
+testuser1.rate_movie(greensaw, 3.0)
+testuser1.rate_movie(greyaxe, 4.5)
+testuser1.rate_movie(pinkcrowbar, 5.0)
