@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
     ratings
   end
 
-  def rate_movie(movie, score)
+  def rate_movie(movie, score = nil)
     user_movies.create(movie: movie, score: score)
   end
 
