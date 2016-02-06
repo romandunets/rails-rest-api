@@ -9,6 +9,6 @@ class Movie < ActiveRecord::Base
   validates :description, presence: true
 
   def average_score
-    user_movies.average(:score)
+    user_movies.average(:score).to_f.round(2)
   end
 end
